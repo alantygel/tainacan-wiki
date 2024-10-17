@@ -184,15 +184,15 @@ So the Item Metadata Entity constructor gets two entities: an item and a metadat
 
 ```php
 // Considering $item is an existing Item Entity an $metadatum an existing Field Entity
-$itemMetadada = new \Tainacan\Entities\ItemMetadataEntity($item, $metadatum);
+$itemMetadata = new \Tainacan\Entities\Item_Metadata_Entity($item, $metadatum);
 
 $itemMetadata->set_value('Red');
 
 if ($itemMetadata->validate()) {
-	$ItemMetadataRepo = \Tainacan\Repositories\ItemMetadata::get_instance();
-	$ItemMetadata = $ItemMetadataRepo->insert($ItemMetadata);
+	$itemMetadataRepo = \Tainacan\Repositories\Item_Metadata::get_instance();
+	$itemMetadata = $itemMetadataRepo->insert($itemMetadata);
 } else {
-	$errors = $ItemMetadata->get_errors();
+	$errors = $itemMetadata->get_errors();
 }
 
 ```
@@ -201,7 +201,7 @@ if ($itemMetadata->validate()) {
 
 If you want to iterate over all metadata of an item or a collection, there are 2 useful methods you can use. The metadata repository has a `fetch_by_collection()` method that will fetch all metadata from a given collection and return them in the right order.
 
-Also, ItemMetadata Repository `fetch()` method will return an array of ItemMetadata Entities related to a given item. 
+Also, Item_Metadata Repository `fetch()` method will return an array of Item_Metadata Entities related to a given item. 
 
 
 ### More about validating
@@ -210,9 +210,9 @@ TODO: document the validation chains
 
 All validations validate the property with the validation declared in the get_map() method of the repository.
 
-Validate item -> call ItemMetadata->validate() for each metadatum
+Validate item -> call Item_Metadata->validate() for each metadatum
 
-Validate ItemMetadata -> call $metadatumType->validate() for the Field type of the metadatum.
+Validate Item_Metadata -> call $metadatumType->validate() for the Field type of the metadatum.
 
 Validate Field -> call validate_options() of the Field type
 
