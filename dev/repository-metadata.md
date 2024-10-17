@@ -186,7 +186,7 @@ Get the Core Description Metadatum for a collection
 ### delete()
 
 
-@param $metadatum_id
+@param \Tainacan\Entities\Metadatum $metadatum
 
 @return mixed|void
 @throws \Exception
